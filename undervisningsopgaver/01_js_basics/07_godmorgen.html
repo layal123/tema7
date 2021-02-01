@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+
+    <script>
+        let resultat;
+
+        function myFunction() {
+            new Date("July 21, 1983 01:15:00").getHours();
+        }
+
+
+        if (myFunction > 5 && myFunction < 10) {
+            resultat = "godmorgen";
+        } else if (myFunction > 10 && myFunction < 18) {
+            resultat = "goddag";
+        } else if (myFunction > 18 && myFunction < 24) {
+            resultat = "godaften";
+        } else if (myFunction > 24 && myFunction < 5) {
+            resultat = "godnat";
+        }
+
+        console.log(resultat);
+
+    </script>
+</body>
+
+</html>
