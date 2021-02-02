@@ -12,24 +12,18 @@
 
 
     <script>
-        let resultat;
+        const time = new Date().getHours();
+        console.log("Time", time);
 
-        function myFunction() {
-            new Date("July 21, 1983 10:15:00").getHours();
-        }
-
-
-        if (myFunction > 5 && myFunction < 10) {
-            resultat = "godmorgen";
-        } else if (myFunction > 10 && myFunction < 18) {
-            resultat = "goddag";
-        } else if (myFunction > 18 && myFunction < 24) {
-            resultat = "godaften";
+        if (time < 5) {
+            console.log("godnat");
+        } else if (time < 10) {
+            console.log("godmorgen");
+        } else if (time < 18) {
+            console.log("goddag");
         } else {
-            resultat = "godnat";
+            console.log("godaften");
         }
-
-        console.log(resultat);
 
     </script>
 </body>
