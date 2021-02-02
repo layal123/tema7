@@ -111,23 +111,29 @@
         const artikel1 = document.querySelector("article:nth-child(1)");
         console.log(artikel1);
         artikel1.style.boxShadow = "43px 37px 31px -5px rgba(0,0,0,0.73)";
-        artikel1.addEventListener("mouseover", toggleShadow);
+        artikel1.addEventListener("mouseover", mouseoverShadow);
+        artikel1.addEventListener("mouseout", mouseoutShadow);
 
 
-        function toggleShadow() {
-            console.log("toggleShadow");
+        function mouseoverShadow() {
+            console.log("mouseoverShadow");
 
             if (artikel1.style.display === "none") {
                 artikel1.style.boxShadow = "43px 37px 31px -5px rgba(0,0,0,0.73)";
             } else {
                 artikel1.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0)";
             }
-
         }
 
-        const artikel2 = document.querySelector("article:nth-child(2)");
-        console.log(artikel2);
-        artikel2.style.boxShadow = "43px 37px 31px -5px rgba(0,0,0,0.73)";
+        function mouseoutShadow() {
+            console.log("mouseoutShadow");
+
+            if (artikel1.style.display === "none") {
+                artikel1.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0)";
+            } else {
+                artikel1.style.boxShadow = "43px 37px 31px -5px rgba(0,0,0,0.73)";
+            }
+        }
 
     </script>
 </body>
