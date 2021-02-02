@@ -117,8 +117,13 @@
         function toggleShadow() {
             console.log("toggleShadow");
 
-            if (artikel1.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0)");
-        } else if (artikel1.style.boxShadow = "43px 37px 31px -5px rgba(0,0,0,0.73)");
+            if (artikel1.style.display === "none") {
+                artikel1.style.boxShadow = "43px 37px 31px -5px rgba(0,0,0,0.73)";
+            } else {
+                artikel1.style.boxShadow = "0px 0px 0px 0px rgba(0,0,0,0)";
+            }
+
+        }
 
         const artikel2 = document.querySelector("article:nth-child(2)");
         console.log(artikel2);
