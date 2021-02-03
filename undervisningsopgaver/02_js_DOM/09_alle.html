@@ -12,6 +12,13 @@
             line-height: 150%;
         }
 
+        .typo2 {
+            font-family: monospace;
+            color: darkblue;
+            line-height: 0%;
+            font-size: 2rem;
+        }
+
     </style>
 
 </head>
@@ -51,18 +58,14 @@
             let alleH3 = document.querySelectorAll("h3");
             alleH3.forEach(h3 => {
                 h3.addEventListener("click", () => {
-                    h3.classList.add("typo");
+                    h3.classList.add("typo2");
                 })
             })
             document.querySelector("button").addEventListener("click", () => {
                 alleH3.forEach(h3 => {
-                    h3.classList.remove("typo");
+                    h3.classList.remove("typo2");
                 })
             })
-
-
-
-
         }
 
     </script>
