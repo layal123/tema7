@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <article>
+        <h3></h3>
+        <img src="" alt="">
+        <p>Type: </p>
+        <p>Levested: </p>
+    </article>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            let dyr = {
+                "navn": "gris",
+                "type": "pattedyr",
+                "billede": "http://mabe-kea.dk/E19/pics/pig.png",
+                "levested": "svinefarme"
+            }
+            console.log(`navn:${dyr.navn}, type:${dyr.type}, levested:${dyr.levested}`);
+
+            let h3 = document.querySelector("h3");
+            let nyOverskrift = document.createTextNode(`${dyr.navn}`);
+            h3.appendChild(nyOverskrift);
+
+            let img = document.querySelector("img");
+            let nytImg = document.createTextNode(`${dyr.billede}`);
+            img.appendChild(nytImg);
+
+            let p = document.querySelector("p:first-child");
+            let type = document.createTextNode(`${dyr.type}`);
+            p.appendChild(type);
+
+            let p2 = document.querySelector("p:nth-child(2)");
+            let levested = document.createTextNode(`${dyr.levested}`);
+            p2.appendChild(levested);
+        }
+
+    </script>
+</body>
+
+</html>
