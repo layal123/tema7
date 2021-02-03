@@ -9,7 +9,9 @@
 </head>
 
 <body>
-    <article></article>
+    <article id="liste">
+
+    </article>
 
 
 
@@ -24,7 +26,7 @@
             "navn": "gris",
             "type": "pattedyr",
             "billede": "http://mabe-kea.dk/E19/pics/pig.png",
-            "levested": "svinefarmen"
+            "levested": "svinefarm"
         }, {
             "navn": "ræv",
             "type": "pattedyr",
@@ -44,6 +46,10 @@
 
         function start() {
             console.log(dyr);
+            const listevisning = document.querySelector("#liste");
+            dyr.forEach(dyrene => {
+                listevisning.innerHTML += `<p>${dyrene.navn}, ${dyrene.type} fra ${dyrene.levested}</p>`
+            })
         }
 
     </script>
