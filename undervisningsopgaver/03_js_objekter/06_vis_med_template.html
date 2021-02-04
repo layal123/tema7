@@ -18,67 +18,47 @@
 
 
 <body>
-    <section class="data_container"></section>
+    <section></section>
     <template>
-        <article id="liste">
+        <article>
             <h3></h3>
             <img src="" alt="">
             <p class="art">Type: </p>
             <p class="sted">Levested: </p>
         </article>
-
     </template>
 
 
-
     <script>
-        let container = document.querySelector(".data_container");
-        let dyrTemplate = document.querySelector("template");
+        let container = document.querySelector("section");
+        let temp = document.querySelector("template");
 
-        document.addEventListener("DOMContentLoaded", start);
-        let dyr = [{
-            "navn": "frø",
-            "type": "amfibie",
-            "billede": "http://mabe-kea.dk/E19/pics/frog.png",
-            "levested": "vandhullet"
-        }, {
-            "navn": "gris",
-            "type": "pattedyr",
-            "billede": "http://mabe-kea.dk/E19/pics/pig.png",
-            "levested": "svinefarm"
-        }, {
-            "navn": "ræv",
-            "type": "pattedyr",
-            "billede": "http://mabe-kea.dk/E19/pics/fox.png",
-            "levested": "skoven"
-        }, {
-            "navn": "sild",
-            "type": "fisk",
-            "billede": "http://mabe-kea.dk/E19/pics/sild.jpg",
-            "levested": "havet"
-        }, {
-            "navn": "krokodille",
-            "type": "krybdyr",
-            "billede": "http://mabe-kea.dk/E19/pics/kroko.jpg",
-            "levested": "floden"
-        }];
+        const fil = "alleDyr.json";
 
-        function start() {
+        async function hentData(fil) {
+            const result = await fetch("alleDyr.json");
+            const json = await result.json();
+            vis(json);
+        }
 
 
+
+        function vis(dyr) {
             //Løb dyrelisten igennem og indsæt data i en template
             dyr.forEach(dyr => {
                 //placer person i HTML
                 let klon = dyrTemplate.cloneNode(true).content;
                 klon.querySelector("h3").textContent = (`${dyr.navn}`);
-                klon.querySelector("img").src = (`|${dyr.billede}`);
-                klon.querySelector("img").alt = (`|${dyr.navn}`);
+                klon.querySelector("img").src = (`${dyr.billede}`);
+                klon.querySelector("img").alt = (`${dyr.navn}`);
                 klon.querySelector(".art").textContent = (`${dyr.type}`);
                 klon.querySelector(".sted").textContent = (`${dyr.levested}`);
                 container.appendChild(klon);
             })
 
         }
+
+        hentData(fil);
 
     </script>
 </body>
