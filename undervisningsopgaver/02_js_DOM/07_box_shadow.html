@@ -54,53 +54,58 @@
     <main>
         <h2>Undertitel</h2>
         <section>
-            <article>
+            <article class="shadow">
                 <img src="https://placeimg.com/400/300/animal" alt="naturbillede">
                 <h3>Artikel 1</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum quae dignissimos assumenda nam labore voluptates perferendis voluptatibus quia enim ut quod delectus, eius dolorem dicta sequi, officia odit veritatis repellendus?</p>
             </article>
-            <article>
+            <article class="shadow">
                 <img src="https://placeimg.com/400/300/nature" alt="naturbillede">
                 <h3>Artikel 2</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum quae dignissimos assumenda nam labore voluptates perferendis voluptatibus quia enim ut quod delectus, eius dolorem dicta sequi, officia odit veritatis repellendus?</p>
             </article>
         </section>
     </main>
-
     <footer>
         <p>Her er footeren</p>
     </footer>
 
+
     <script>
+        const articleSection = document.querySelector("section");
+        const title = document.querySelector("header h1");
+        const article1 = document.querySelector("article:nth-child(1)");
+        let img1 = document.querySelector("article:nth-child(1) img");
+        let img2 = document.querySelector("article:nth-child(2) img");
+        let img3;
+        const article1H3 = document.querySelector("article:nth-child(1) h3")
+        const article1P = document.querySelector("article:nth-child(1) p")
+
         document.addEventListener("DOMContentLoaded", start);
 
         function start() {
+            title.textContent = "billeder";
+            article1H3.textContent = "arkitektur";
+            article1P.textContent = "Her er nogle flotte bygninger";
+            img1.src = "https://placeimg.com/400/300/arch"
+            img1.alt = "arkitektur billede"
 
-            //Jeg laver en ny sektion og kalder den for 'newSection'
-            let newSection = document.querySelector("section");
-            //Laver en ny artikel og kalder den for 'newArticle'
             let newArticle = document.createElement("article");
-            //Laver en ny h3 og kalder den for 'overskrift':
-            let overskrift = document.createElement("h3");
-            //Laver teksten til overskriften gennem .createTextNode, og kalder det "overskriftText":
-            let overskriftText = document.createTextNode("Artikel 3")
-                //Laver et nyt img, og sætter sourcen ind til billedet
-            let foto = document.createElement("img");
-            foto.src = "https://placeimg.com/400/300/any";
+            newArticle.classList.add("shadow");
+            let newH3 = document.createElement("h3");
+            let newH3Text = document.createTextNode("Mennesker");
+            newH3.appendChild(newH3Text);
 
+            let newPic = document.createElement("img");
+            newPic.src = "https://placeimg.com/400/300/people";
+            let newP = document.createElement("p");
+            newP.textContent = "Her står der nogle flotte mennesker";
+            newArticle.appendChild(newPic);
+            newArticle.appendChild(newH3);
+            newArticle.appendChild(newP);
+            articleSection.appendChild(newArticle);
 
-            //Gennem "appendChild" tilføjer jeg teksten til overskriften:
-            overskrift.appendChild(overskriftText);
-            //Derefter tilføjer jeg overskriften til den nye artikel:
-            newArticle.appendChild(overskrift);
-            //til slut tilføjer jeg hele den nye artikel, med den nye overskrift in i den nye sektion:
-            newSection.appendChild(newArticle);
-            //Sætter billedet ind i article
-            newArticle.appendChild(foto);
-
-            //Når der klikkes på det første billede, skiftes det ud:
-            const billede1 = document.querySelector("article:nth-child(1) img");
-            document.addEventListener("click", skiftBillede);
+            img1.addEventListener("click", skiftBillede);
 
 
             document.querySelector("article:nth-child(1)").addEventListener("mouseover", mouseoverShadow)
@@ -113,12 +118,13 @@
 
         function mouseoverShadow() {
             console.log("mouse over");
-            this.classlist.toggle("shadow");
+            this.classList.toggle("shadow");
         }
 
 
         function skiftBillede() {
-            billede1.src = "https://placeimg.com/400/300/people";
+            let tal = Math.round(Math.random() * 10);
+            img1.src = "https://placeimg.com/400/300/people";
         }
 
     </script>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .data_container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            padding: 1vw;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        p {
+            display: inline;
+            font-size: 0.8rem;
+        }
+
+        article {
+            padding: 0.5vw;
+            margin-top: 5vw;
+        }
+
+    </style>
+</head>
+
+
+
+<body>
+    <section class="data_container">
+        <template>
+            <article id="liste">
+                <img src="" alt="" class="filter">
+                <h3></h3>
+                <p class="instruktør_p"></p>
+                <p class="land_p"></p>
+                <p class="varighed_p"></p>
+                <p class="produktionsår_p"></p>
+            </article>
+        </template>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        let film = [{
+            "billede": "galleri/a_calling.jpg",
+            "titel": "A calling",
+            "instruktør": "Christian Bengtson",
+            "land": "Danmark",
+            "varighed": "20 min",
+            "produktionsår": "2019"
+        }, {
+            "billede": "galleri/a_hole_in_my_heart.jpg",
+            "titel": "A Hole In My Heart",
+            "instruktør": "Mees Peijnenburg",
+            "land": "Holland",
+            "varighed": "9 min",
+            "produktionsår": "2015"
+        }, {
+            "billede": "galleri/a_place_in_the_sun.jpg",
+            "titel": "A Place In The Sun - 110 years after the genocide",
+            "instruktør": "Christian Zipfel",
+            "land": "Tyskland",
+            "varighed": "20 min",
+            "produktionsår": "2018"
+        }, {
+            "billede": "galleri/a_tower_of_two.jpg",
+            "titel": "A Tower of Two",
+            "instruktør": "Jacob Krzysztof Glogowski",
+            "land": "Danmark",
+            "varighed": "21 min",
+            "produktionsår": "2019"
+        }, {
+            "billede": "galleri/a_worthy_man.jpg",
+            "titel": "A Worthy Man",
+            "instruktør": "Kristian Håskjold",
+            "land": "Danmark",
+            "varighed": "19 min",
+            "produktionsår": "2018"
+        }];
+
+        function start() {
+
+            const container = document.querySelector(".data_container");
+            const filmTemplate = document.querySelector("template");
+            //Løb filmlisten igennem og indsæt data i en template
+            film.forEach(film => {
+                //placer person i HTML
+                let klon = filmTemplate.cloneNode(true).content;
+                klon.querySelector("img").src = (`${film.billede}`);
+                klon.querySelector("img").alt = (`${film.titel}`);
+                klon.querySelector("h3").textContent = (`${film.titel}`);
+                klon.querySelector(".instruktør_p").textContent = (`${film.instruktør}`);
+                klon.querySelector(".land_p").textContent = (`| ${film.land}`);
+                klon.querySelector(".varighed_p").textContent = (`| ${film.varighed}`);
+                klon.querySelector(".produktionsår_p").textContent = (`| ${film.produktionsår}`);
+                container.appendChild(klon);
+            })
+        }
+
+    </script>
+</body>
+
+</html>

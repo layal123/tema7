@@ -12,8 +12,8 @@
     <article>
         <h3></h3>
         <img src="" alt="">
-        <p>Type: </p>
-        <p>Levested: </p>
+        <p class="art">Type: </p>
+        <p class="sted">Levested: </p>
     </article>
 
 
@@ -21,9 +21,6 @@
     <script>
         let h3 = document.querySelector("h3");
         let img = document.querySelector("img");
-        const p1 = document.querySelector("article:nth-child(1) p");
-        const p2 = document.querySelector("article:nth-child(2) p");
-
 
         document.addEventListener("DOMContentLoaded", start);
 
@@ -41,12 +38,11 @@
 
             img.src = (`${dyr.billede}`);
 
-            let type = document.createTextNode(`${dyr.type}`);
-            p1.appendChild(type);
+            let art = document.createTextNode(`${dyr.type}`);
+            art.appendChild(type);
 
-            let levested = document.createTextNode(`${dyr.levested}`);
-            p2.appendChild(levested);
-
+            let sted = document.createTextNode(`${dyr.levested}`);
+            sted.appendChild(levested);
 
         }
 

@@ -23,8 +23,8 @@
         <article id="liste">
             <h3></h3>
             <img src="" alt="">
-            <p>Type: </p>
-            <p>Levested: </p>
+            <p class="art">Type: </p>
+            <p class="sted">Levested: </p>
         </article>
 
     </template>
@@ -32,6 +32,9 @@
 
 
     <script>
+        let container = document.querySelector(".data_container");
+        let dyrTemplate = document.querySelector("template");
+
         document.addEventListener("DOMContentLoaded", start);
         let dyr = [{
             "navn": "frø",
@@ -62,16 +65,16 @@
 
         function start() {
 
-            const container = document.querySelector(".data_container");
-            const dyrTemplate = document.querySelector("template");
+
             //Løb dyrelisten igennem og indsæt data i en template
             dyr.forEach(dyr => {
                 //placer person i HTML
                 let klon = dyrTemplate.cloneNode(true).content;
                 klon.querySelector("h3").textContent = (`${dyr.navn}`);
-                klon.querySelector("img").src = (`${dyr.billede}`);
-                klon.querySelector("p").textContent = (`${dyr.type}`);
-                klon.querySelector("p").textContent = (`${dyr.levested}`);
+                klon.querySelector("img").src = (`|${dyr.billede}`);
+                klon.querySelector("img").alt = (`|${dyr.navn}`);
+                klon.querySelector(".art").textContent = (`${dyr.type}`);
+                klon.querySelector(".sted").textContent = (`${dyr.levested}`);
                 container.appendChild(klon);
             })
 
