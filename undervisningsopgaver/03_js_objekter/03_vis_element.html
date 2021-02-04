@@ -19,6 +19,12 @@
 
 
     <script>
+        let h3 = document.querySelector("h3");
+        let img = document.querySelector("img");
+        const p1 = document.querySelector("article:nth-child(1) p");
+        const p2 = document.querySelector("article:nth-child(2) p");
+
+
         document.addEventListener("DOMContentLoaded", start);
 
         function start() {
@@ -30,21 +36,18 @@
             }
             console.log(`navn:${dyr.navn}, type:${dyr.type}, levested:${dyr.levested}`);
 
-            let h3 = document.querySelector("h3");
             let nyOverskrift = document.createTextNode(`${dyr.navn}`);
             h3.appendChild(nyOverskrift);
 
-            let img = document.querySelector("img");
-            let nytImg = document.createTextNode(`${dyr.billede}`);
-            img.appendChild(nytImg);
+            img.src = (`${dyr.billede}`);
 
-            let p = document.querySelector("p:first-child");
             let type = document.createTextNode(`${dyr.type}`);
-            p.appendChild(type);
+            p1.appendChild(type);
 
-            let p2 = document.querySelector("p:nth-child(2)");
             let levested = document.createTextNode(`${dyr.levested}`);
             p2.appendChild(levested);
+
+
         }
 
     </script>
