@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babushka</title>
+    <style>
+        body {
+            background-color: white;
+        }
+
+        section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            margin-left: 20vw;
+            margin-right: 20vw;
+        }
+
+        article {
+            border: 1px round #333;
+            border-radius: 25px;
+            padding: 10px;
+            margin: 1em;
+            background-color: #ececec;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            font-size: 1.65rem;
+            text-align: center;
+        }
+
+        h4 {
+            font-size: 1.65rem;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Babushka</h1>
+    <section>
+
+    </section>
+    <template>
+        <article>
+            <img src="" alt="" class="billede">
+            <h2 class="navn"></h2>
+            <h3 class="kort_beskrivelse"></h3>
+            <h4 class="pris"></h4>
+        </article>
+    </template>
+
+    <script>
+        const url = "https://babushka-dd8a.restdb.io/rest/menu";
+        //        const medieurl = "https://persongalleri-5d3e.restdb.io/media/"
+
+        const options = {
+            headers: {
+                'x-apikey': "600ec2fb1346a1524ff12de4"
+            }
+        };
+
+        async function hentData() {
+
+            const respons = await fetch(url, options);
+            const json = await respons.json();
+            vis(json);
+        }
+
+        const container = document.querySelector("section");
+        const temp = document.querySelector("template").content;
+
+        function vis(json) {
+            console.log(json);
+            json.forEach(mad => {
+                const klon = temp.cloneNode(true);
+                //                klon.querySelector(".billede").src = medieurl + mad.billede;
+                klon.querySelector(".navn").textContent = mad.navn;
+                klon.querySelector(".kort_beskrivelse").textContent = mad.kortbeskrivelse;
+                klon.querySelector(".pris").textContent = (`pris: ${mad.pris}`);
+                container.appendChild(klon);
+            })
+        }
+
+        hentData();
+
+    </script>
+</body>
+
+</html>
