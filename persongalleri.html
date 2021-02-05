@@ -79,8 +79,8 @@
                 const klon = temp.cloneNode(true);
                 klon.querySelector(".billede").src = medieurl + person.billede;
                 klon.querySelector(".navn").textContent = person.fornavn;
-                klon.querySelector(".hobby").textContent = (`hobby: ${person.hobby}`);
-                klon.querySelector(".troende").textContent = (`troende?: ${person.troende}`);
+                klon.querySelector(".hobby").textContent = (`Hobby: ${person.hobby}`);
+                klon.querySelector(".troende").textContent = (`Troende?: ${person.troende}`);
                 container.appendChild(klon);
             })
         }
